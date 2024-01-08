@@ -1,0 +1,2 @@
+# prebid-module-local
+ 
