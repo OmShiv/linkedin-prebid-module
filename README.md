@@ -1,12 +1,12 @@
 # LinkedIn Ads ID Module for Prebid
 
-## Overview
+#### Overview
 
 The LinkedIn Ads ID module is an extension for the Prebid User ID module, aimed at incorporating LinkedIn advertising identifiers into the Prebid ecosystem. This module enables the capture and utilization of LinkedIn's Ads ID for better targeting and efficiency in advertising campaigns. The Prebid User ID module is a prerequisite for using the LinkedIn Ads ID module.
 
 For support and queries, reachout to prebid@linkedin.com.
 
-## Features
+#### Features
 
 - Integrates with the Prebid User ID module to support LinkedIn Ads ID.
 - Utilizes browser cookies to retrieve LinkedIn Ads IDs.
@@ -14,7 +14,7 @@ For support and queries, reachout to prebid@linkedin.com.
 - Supports the generation of a new LinkedIn Ads ID if an existing one is not found, ensuring continuous tracking capabilities.
 - Provides a mechanism to decode and prepare the LinkedIn Ads ID for bid requests.
 
-## Installation
+#### Installation
 
 To install the LinkedIn Ads ID module, you must first ensure that the Prebid User ID module is integrated into your Prebid setup. Once that prerequisite is met, you can include the LinkedIn Ads ID module in your Prebid implementation.
 
@@ -22,7 +22,7 @@ To install the LinkedIn Ads ID module, you must first ensure that the Prebid Use
 2. Navigate to the root directory of the cloned repository.
 3. Include the LinkedIn Ads ID module in your build using the Prebid build tools.
 
-## Usage
+#### Usage
 
 To use the LinkedIn Ads ID module, follow these steps:
 
@@ -51,19 +51,19 @@ pbjs.setConfig({
 Methods
 ---
 
-## `getCookieIds()`
+#### `getCookieIds()`
 Returns the values of LinkedIn-specific cookies used for tracking (li_fat, li_giant).
 
-## `decode(id)`
+#### `decode(id)`
 Decodes the stored LinkedIn Ads ID value for bid requests.
 
-## `getId(config)`
+#### `getId(config)`
 Retrieves the LinkedIn Ads ID from storage or generates a new one if necessary.
 
-## `hasConsent()`
+#### `hasConsent()`
 Checks for the necessary consents (GDPR, CCPA, COPPA) before utilizing the LinkedIn Ads ID.
 
-## Consent Management
+#### Consent Management
 The LinkedIn Ads ID module checks for GDPR, CCPA, and COPPA consents to ensure compliance with privacy regulations. It uses the Prebid consent management modules (gdprDataHandler, uspDataHandler, coppaDataHandler) to verify that the necessary consents are in place.
 
 ## Contributing
