@@ -1,7 +1,7 @@
 /**
- * This module adds LinkedIn Audience Network ID to the User ID module
+ * This module adds LinkedIn Ads ID to the User ID module
  * The {@link module:modules/userId} module is required
- * @module modules/linkedInAudienceNetworkIdSystem
+ * @module modules/linkedInAdsIdSystem
  * @requires module:modules/userId
  */
 
@@ -11,16 +11,16 @@ import { getStorageManager } from '../src/storageManager.js';
 import { MODULE_TYPE_UID } from '../src/activities/modules.js';
 import { uspDataHandler, coppaDataHandler, gdprDataHandler } from '../src/adapterManager.js';
 
-const MODULE_NAME = 'linkedInAudienceNetworkId';
+const MODULE_NAME = 'linkedInAdsId';
 const STORAGE_KEY = 'li_adsId';
-const LOG_PREFIX = 'LinkedIn Audience Network Id: ';
+const LOG_PREFIX = 'LinkedIn Ads ID: ';
 const LI_FAT_COOKIE = 'li_fat';
 const LI_GIANT_COOKIE = 'li_giant';
 
 const BrowserStorage = getStorageManager({ moduleType: MODULE_TYPE_UID, moduleName: MODULE_NAME });
 
 /** @type {Submodule} */
-export const linkedInAudienceNetworkIdSubmodule = {
+export const linkedInAdsIdSubmodule = {
 
   /**
    * Used to link submodule with config
@@ -47,18 +47,18 @@ export const linkedInAudienceNetworkIdSubmodule = {
     const cookies = this.getCookieIds();
     logInfo(`${LOG_PREFIX} found Legacy cookies: ${JSON.stringify(cookies)}`);
 
-    const linkedInAudienceNetworkId = {
+    const linkedInAdsId = {
       li_adsId: id,
       ext: {
         ...cookies,
       },
     };
 
-    return { linkedInAudienceNetworkId };
+    return { linkedInAdsId };
   },
 
   /**
-   * Performs actions to obtain `linkedInAudienceNetworkId` from storage
+   * Performs actions to obtain `linkedInAdsId` from storage
    * @returns { { id: string } | undefined }
    */
   getId(config) {
@@ -107,7 +107,7 @@ export const linkedInAudienceNetworkIdSubmodule = {
   },
 
   eids: {
-    'linkedInAudienceNetworkId': {
+    'linkedInAdsId': {
       source: 'linkedin.com',
       getValue: function(data) {
         return data.li_adsId;
@@ -122,4 +122,4 @@ export const linkedInAudienceNetworkIdSubmodule = {
   }
 };
 
-submodule('userId', linkedInAudienceNetworkIdSubmodule);
+submodule('userId', linkedInAdsIdSubmodule);
