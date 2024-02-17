@@ -1,4 +1,4 @@
-# LinkedIn Ads ID Module for Prebid
+## LinkedIn Ads ID Module for Prebid
 
 #### Overview
 
@@ -18,17 +18,16 @@ For support and queries, reachout to prebid@linkedin.com.
 
 To install the LinkedIn Ads ID module, you must first ensure that the Prebid User ID module is integrated into your Prebid setup. Once that prerequisite is met, you can include the LinkedIn Ads ID module in your Prebid implementation.
 
-1. Clone or download the Prebid.js repository.
-2. Navigate to the root directory of the cloned repository.
+1. Clone or download the Prebid.js repository
+2. Navigate to the root directory of the cloned repository
 3. Include the LinkedIn Ads ID module in your build using the Prebid build tools.
 
 #### Usage
 
 To use the LinkedIn Ads ID module, follow these steps:
 
-1. Configure the User ID module in your Prebid setup.
+1. Configure the User ID module in your Prebid setup
 2. Add the LinkedIn Ads ID submodule configuration to the User ID module's configuration.
-3. Ensure that your site has the necessary cookies (`li_fat`, `li_giant`) set by LinkedIn for tracking.
 
 Example configuration:
 
@@ -38,9 +37,8 @@ pbjs.setConfig({
     userIds: [{
       name: "linkedInAdsId",
       storage: {
-        name: "li_adsId",
-        type: "cookie",
-        expires: 60
+        type: "html5",
+        name: "linkedInAdsId"
       }
     }],
     auctionDelay: 50 // Optional: set auction delay in milliseconds
@@ -48,11 +46,11 @@ pbjs.setConfig({
 });
 ```
 
-Methods
+Class Methods
 ---
 
 #### `getCookieIds()`
-Returns the values of LinkedIn-specific cookies used for tracking (li_fat, li_giant).
+Returns the values of LinkedIn-specific cookies used for tracking (li_fat, li_giant) if set on page.
 
 #### `decode(id)`
 Decodes the stored LinkedIn Ads ID value for bid requests.
@@ -63,11 +61,58 @@ Retrieves the LinkedIn Ads ID from storage or generates a new one if necessary.
 #### `hasConsent()`
 Checks for the necessary consents (GDPR, CCPA, COPPA) before utilizing the LinkedIn Ads ID.
 
-#### Consent Management
+Prebid methods
+---
+#### pbjs.getUserIds()
+```
+{
+  "linkedInAdsId": {
+    "li_adsId": "358cd91a-462d-4363-88ca-0e9a956c9c46",
+    "ext": {
+      "li_fat": <string>,
+      "li_giant": <string>
+    }
+  },
+  ...
+}
+```
+
+#### pbjs.getUserIdsAsEids()
+```
+[
+  {
+    "source": "linkedin.com",
+    "uids": [
+      {
+        "id": "358cd91a-462d-4363-88ca-0e9a956c9c46", // linkedInAdsId value
+        "atype": 1,
+        "ext": {
+          "li_fat": <string>,
+          "li_giant": <string>
+        }
+      }
+    ]
+  }, ...
+]
+```
+#### LocalStorage values example
+```
+{
+  "li_adsId_cst": "zix7LPQsHA==",
+  "li_adsId_exp": "Mon, 04 Mar 2024 20:30:05 GMT",
+  "li_adsId": "358cd91a-462d-4363-88ca-0e9a956c9c46"
+}
+```
+
+Consent Management
+---
 The LinkedIn Ads ID module checks for GDPR, CCPA, and COPPA consents to ensure compliance with privacy regulations. It uses the Prebid consent management modules (gdprDataHandler, uspDataHandler, coppaDataHandler) to verify that the necessary consents are in place.
 
-#### Contributing
+
+Contributing
+---
 Contributions to the LinkedIn Ads ID module are welcome. Please follow the contributing guidelines outlined in the Prebid.js repository when submitting issues or pull requests.
 
-#### License
+License
+---
 The LinkedIn Ads ID module is licensed under the same license as the Prebid.js project. Please refer to the Prebid.js repository for more details on the license.
