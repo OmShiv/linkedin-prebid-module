@@ -66,8 +66,8 @@ Checks for the necessary consents (GDPR, CCPA, COPPA) before utilizing the Linke
 #### Consent Management
 The LinkedIn Ads ID module checks for GDPR, CCPA, and COPPA consents to ensure compliance with privacy regulations. It uses the Prebid consent management modules (gdprDataHandler, uspDataHandler, coppaDataHandler) to verify that the necessary consents are in place.
 
-## Contributing
+#### Contributing
 Contributions to the LinkedIn Ads ID module are welcome. Please follow the contributing guidelines outlined in the Prebid.js repository when submitting issues or pull requests.
 
-## License
+#### License
 The LinkedIn Ads ID module is licensed under the same license as the Prebid.js project. Please refer to the Prebid.js repository for more details on the license.
