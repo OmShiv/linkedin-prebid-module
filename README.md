@@ -46,6 +46,7 @@ pbjs.setConfig({
     auctionDelay: 50 // Optional: set auction delay in milliseconds
   }
 });
+```
 
 Methods
 ---
